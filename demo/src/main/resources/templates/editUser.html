@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8" /><title>Edit User</title></head>
+<body>
+<h1>Edit User</h1>
+<form action="/edit" method="post">
+    <input type="hidden" name="id" th:value="${user.id}" />
+    Name: <input type="text" name="name" th:value="${user.name}" /><br/>
+    Age: <input type="number" name="age" th:value="${user.age}" /><br/>
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+        <option value="male" th:selected="${user.gender == 'male'}">Male</option>
+        <option value="female" th:selected="${user.gender == 'female'}">Female</option>
+        <option value="not to answer" th:selected="${user.gender == 'not to answer'}">Not to answer</option>
+    </select><br/>
+    Married: <input type="checkbox" name="marriage"
+                    th:checked="${user.marriage} ? 'checked' : null"/><br/>
+    <button type="submit">Save Changes</button>
+</form>
+<a href="/">Back to list</a>
+</body></html>
